@@ -8,6 +8,20 @@
   let f=d.getElementsByTagName(s)[0];
   f.parentNode.insertBefore(j,f);
 })(window,document,"script","69f7fdc3-3a77-41fd-9203-0e4cefc7afb8");
+    function trackAndRedirect(event, url) {
+        event.preventDefault(); // Prevents default link action
+        if (typeof trackify !== "undefined" && trackify.trackEvent) {
+          trackify.trackEvent("sign_up");
+          console.log("trackify.trackEvent('sign_up') called");
+          // Open the URL in a new tab after a short delay
+          setTimeout(() => {
+            window.open(url, "_blank", "noopener,noreferrer");
+          }, 300); // Delay for 300ms to allow tracking
+        } else {
+          // If trackify isn't available, open the link immediately
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
+      }
 
 </script>
   <meta charset="UTF-8">
